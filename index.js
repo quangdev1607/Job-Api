@@ -31,7 +31,7 @@ app.use(xss())
 
 
 //------------------------Routes------------------------
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send("Job api homepage")
 })
 app.use('/api/auth', authRouter)
@@ -42,7 +42,7 @@ app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
 //-------------------------PORT------------------------
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 const start = async () => {
     try {
         connectDB(process.env.MONGO_URI)
@@ -51,6 +51,7 @@ const start = async () => {
         });
     } catch (error) {
         console.log(error)
+        process.exit(1)
     }
 }
 start()
