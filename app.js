@@ -31,6 +31,9 @@ app.use(xss())
 
 
 //------------------------Routes------------------------
+app.use('/', (req, res) => {
+    res.send("Job api homepage")
+})
 app.use('/api/auth', authRouter)
 app.use('/api/jobs', auth, jobRouter)
 
